@@ -62,6 +62,20 @@ It takes a function fn as input and returns a cached version of that function. I
 The factorial function calculates the factorial of a given number. When called with an argument n, it iteratively computes the factorial by multiplying n with each decreasing integer until reaching 1.
 This implementation is straightforward but can be inefficient for repetitive calculations, which is where caching with cacheFunction becomes beneficial.
 
+> [!TIP]
+> When **cacheFunction** is called, it creates a new **lexical environment** (or scope) where the **cache object** is declared. The **inner function** returned by **cacheFunction** forms a **closure**, which means it **retains a reference** to the **lexical environment** where it was defined, including any **variables** in that environment (like **cache**).
+
+Now, let's break down why the cache object is not removed from memory:
+
+> [!IMPORTANT]
+> 1. **Closure Retains References**: Even after **cacheFunction** finishes executing and its local variables (including **cache**) would typically be destroyed, the **inner function maintains a reference to the cache object**. This is because **the inner function is a closure and retains access to the lexical environment where cache is declared**.
+
+> [!IMPORTANT]
+> 2. **Garbage Collection**: JavaScript engines use a mechanism called **"garbage collection"** to manage memory. Garbage collection automatically identifies and frees up memory that is no longer needed by the program. However, since the **inner function maintains a reference to the cache object**, the JavaScript engine recognizes that **the object is still in use and therefore does not remove it from memory**.
+
+> [!IMPORTANT]
+> 3. **Repeated Access**: Each time you call a **certain instance, created from the cacheFunction**, you're essentially invoking **the same inner function that retains access to the same cache object**. This means that **the same cache object** is used across multiple invocations of a **certain instance, created from the cacheFunction**, leading to consistent behavior where cached results are retained and reused.
+
 ## Graph Algorithms
 
 ### Breadth First Search (BFS)
