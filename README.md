@@ -99,6 +99,9 @@ Using a priority queue, it iteratively explores neighboring nodes, updating thei
 This algorithmic approach is invaluable for finding optimal routes in various applications such as network routing and transportation logistics.
 
 ### Prim's Algorithm (Minimum Spanning Tree)
+> [!IMPORTANT]
+> *In graph theory, the problem of constructing a minimum spanning tree is one of the fundamental problems, which aims to find a subset of graph edges that connects all its vertices without forming cycles and has the minimum total cost. To solve this problem, there are several algorithms, one of which is the Prim method. This algorithm uses a greedy approach, starting with choosing a random vertex and sequentially adding edges with the least weight to the spanning tree, connecting already visited vertices with unvisited ones.*
+
 Prim's algorithm, efficiently constructs the Minimum Spanning Tree (MST) of a graph by iteratively selecting edges with the minimum weight. Beginning from an arbitrary vertex, it progressively grows the MST by greedily choosing the edge that connects the existing MST to the nearest unvisited vertex.
 This process continues until all vertices are visited, resulting in an MST that spans all vertices with minimal total edge weight. The calculatePrimMSTCost function complements this by computing the total cost of the MST.
 Prim's algorithm finds extensive application in network design, where it helps minimize the cost of connecting various locations or components while ensuring connectivity.
