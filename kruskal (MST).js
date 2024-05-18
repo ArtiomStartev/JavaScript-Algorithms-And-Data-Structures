@@ -100,11 +100,5 @@ function union(parent, x, y) {
  * @returns {number} - The total cost of the Minimum Spanning Tree.
  */
 function calculateMSTCost(mst) {
-  let totalCost = 0;
-  for (const edge of mst) {
-    // Adding the weight of the edge
-    totalCost += edge[2];
-  }
-
-  return totalCost;
+  return mst.reduce((acc, edge) => (acc += edge[2]), 0);
 }
