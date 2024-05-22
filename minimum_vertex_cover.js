@@ -27,8 +27,14 @@ function findMinimumVertexCover(graph) {
 
     // Step 2: Remove the selected vertex and its neighborhood from the graph
     graph[minDegreeVertex].forEach((neighbor) => {
-      delete graph[neighbor]; // Remove the adjacent vertices
+      // Remove the selected vertex from the adjacency lists of its neighbors
+      graph[neighbor].forEach((vertex) => {
+        graph[vertex] = graph[vertex].filter((v) => v !== neighbor);
+      });
+
+      delete graph[neighbor]; // Remove the neighbor itself from the graph
     });
+
     delete graph[minDegreeVertex]; // Remove the selected vertex
   }
 
