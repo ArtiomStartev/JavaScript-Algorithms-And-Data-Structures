@@ -1,12 +1,12 @@
 /**
- * Finds a minimum vertex cover in a graph.
+ * Finds a maximal independent set in a graph.
  * @param {object} graph - The graph represented as an adjacency list.
- * @returns {Set} - A minimum vertex cover of the graph.
+ * @returns {Array} - An array representing the vertices of a maximal independent set.
  */
 
-function findMinimumVertexCover(graph) {
-  // Initialize an empty set for the minimum vertex cover
-  const vertexCover = new Set();
+function findMaximalIndependentSet(graph) {
+  // Initialize an empty set for the independent set
+  const independentSet = new Set();
 
   // Repeat until all vertices are covered
   while (Object.keys(graph).length) {
@@ -22,8 +22,8 @@ function findMinimumVertexCover(graph) {
       }
     }
 
-    // Add the selected vertex to the vertex cover set
-    vertexCover.add(minDegreeVertex);
+    // Add the selected vertex to the independent set
+    independentSet.add(minDegreeVertex);
 
     // Step 2: Remove the selected vertex and its neighborhood from the graph
     graph[minDegreeVertex].forEach((neighbor) => {
@@ -38,5 +38,5 @@ function findMinimumVertexCover(graph) {
     delete graph[minDegreeVertex]; // Remove the selected vertex
   }
 
-  return vertexCover;
+  return independentSet;
 }
